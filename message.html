@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You</title>
+    <style>
+        body { 
+            background: #fff5f7; 
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; margin: 0; padding: 20px; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .photo-frame {
+            background: white; padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: rotate(-3deg); margin-bottom: 30px; max-width: 250px;
+        }
+        .photo-frame img { width: 100%; height: auto; display: block; border-radius: 2px; }
+
+        .letter-box {
+            max-width: 600px; background: white; padding: 40px;
+            border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative; border-left: 5px solid #ff4d6d;
+        }
+        #typewriter {
+            font-size: 1.3rem; line-height: 2; color: #444; min-height: 150px;
+            font-weight: 500;
+        }
+        .cursor { border-right: 3px solid #ff4d6d; animation: blink 0.7s infinite; margin-left: 5px; }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .next-btn {
+            display: none; text-align: center; margin-top: 30px; text-decoration: none;
+            color: #ff4d6d; font-weight: bold; border: 2px solid #ff4d6d;
+            padding: 12px 25px; border-radius: 25px; transition: 0.3s;
+        }
+        .next-btn:hover { background: #ff4d6d; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="photo-frame">
+        <img src="image1.jpg" alt="Our Memory">
+    </div>
+
+    <div class="letter-box">
+        <div id="typewriter"></div><span class="cursor"></span>
+        
+        <div style="text-align: center;">
+            <a href="memories.html" class="next-btn" id="nextBtn">நம் நினைவுகளைக் காண... →</a>
+        </div>
+    </div>
+
+    <script>
+        // The message in Tamil as requested
+        const text = "En Anbe... Happy Birthday! Unna maari oru special person-kaaga edhaavathu pannanum-nu nunaichen. Naam rendum serndhu spend panna ovvoru moment-um... namma life-oda sila azhagana memories-a unkooda share panna aasapaduren...";
+        
+        let i = 0;
+        const speed = 100; // Typing speed
+
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.getElementById("nextBtn").style.display = "inline-block";
+                document.querySelector(".cursor").style.display = "none";
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
+</body>
+</html>

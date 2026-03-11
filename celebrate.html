@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Together Forever</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #ffafbd, #ffc3a0);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+        .celebration-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: popIn 1s ease-out;
+            max-width: 500px;
+            z-index: 10;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        h1 { color: #ff4d6d; font-size: 2.5rem; margin-bottom: 10px; }
+        p { font-size: 1.2rem; color: #555; font-weight: bold; }
+        
+        .final-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ff4d6d;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            user-select: none;
+            animation: float 4s linear infinite;
+            top: 100%;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="celebration-card">
+        <img src="image1.jpg" alt="Us" class="final-photo">
+        <h1>Official-ah Naama Set Ayitom! ❤️</h1>
+        <p>Iniku dhaan en life-oda best birthday celebration ah eerukum nu nenaikuren !</p>
+        <p style="color: #ff4d6d; font-size: 1.5rem;">I Love You Forever! 💍✨</p>
+    </div>
+
+    <script>
+        // Function to create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
